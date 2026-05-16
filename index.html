@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South Sound Playbook — Claim Your Summer Activity Pack!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sun: #f97316;
+    --sun-light: #fff7ed;
+    --sun-dark: #c2410c;
+    --sky: #38bdf8;
+    --grass: #4ade80;
+    --grass-dark: #16a34a;
+    --yellow: #fbbf24;
+    --pink: #fb7185;
+    --purple: #a78bfa;
+    --dark: #1e293b;
+    --gray: #64748b;
+    --light-gray: #f1f5f9;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #fffbf5;
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ANIMATED BACKGROUND */
+  .bg-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    animation: float 8s ease-in-out infinite;
+  }
+  .blob-1 { width: 400px; height: 400px; background: #fbbf24; top: -100px; right: -100px; animation-delay: 0s; }
+  .blob-2 { width: 300px; height: 300px; background: #4ade80; bottom: 100px; left: -80px; animation-delay: -3s; }
+  .blob-3 { width: 250px; height: 250px; background: #38bdf8; top: 40%; right: -60px; animation-delay: -5s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.04); }
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 48px 24px 40px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .trophy-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px; height: 96px;
+    background: var(--yellow);
+    border-radius: 50%;
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: bounce 2s ease-in-out infinite;
+    box-shadow: 0 8px 32px rgba(251,191,36,0.4);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--grass);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(32px, 7vw, 48px);
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+  h1 span { color: var(--sun); }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--gray);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  /* PREVIEW STRIP */
+  .preview-strip {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .preview-pill {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: white;
+    border-radius: 24px;
+    border: 3px solid var(--sun);
+    padding: 32px 28px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    box-shadow: 0 20px 60px rgba(249,115,22,0.15);
+  }
+
+  .form-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    color: var(--dark);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .form-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2.5px solid #e2e8f0;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    background: #f8fafc;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus {
+    border-color: var(--sun);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(249,115,22,0.12);
+  }
+  input::placeholder { color: #94a3b8; font-weight: 600; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--sun);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+    letter-spacing: 0.5px;
+  }
+  .submit-btn:hover {
+    background: var(--sun-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(249,115,22,0.4);
+  }
+  .submit-btn:active { transform: translateY(0); }
+
+  .privacy-note {
+    text-align: center;
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+
+  /* SUCCESS STATE */
+  .success-card {
+    display: none;
+    background: white;
+    border-radius: 24px;
+    border: 3px solid var(--grass);
+    padding: 36px 28px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(74,222,128,0.15);
+  }
+
+  .success-emoji {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 16px;
+    animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  @keyframes pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+  }
+
+  .success-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 32px;
+    color: var(--grass-dark);
+    margin-bottom: 8px;
+  }
+
+  .success-sub {
+    font-size: 15px;
+    color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--dark);
+    color: white;
+    padding: 16px 28px;
+    border-radius: 14px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+    box-shadow: 0 6px 20px rgba(30,41,59,0.25);
+    margin-bottom: 16px;
+  }
+  .download-btn:hover {
+    background: #0f172a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(30,41,59,0.3);
+  }
+  .download-btn .dl-icon { font-size: 24px; }
+
+  .download-note {
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  /* WHAT YOU GET */
+  .section {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+  }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 24px;
+    text-align: center;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .feature-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .feature-card .f-emoji { font-size: 30px; display: block; margin-bottom: 8px; }
+  .feature-card .f-title { font-size: 13px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .feature-card .f-sub { font-size: 12px; font-weight: 600; color: var(--gray); line-height: 1.4; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: #94a3b8;
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  footer .brand { font-family: 'Fredoka One', cursive; color: var(--sun); font-size: 18px; display: block; margin-bottom: 4px; }
+
+  /* Confetti canvas */
+  #confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  @media (max-width: 420px) {
+    .features-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    .form-card, .success-card { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="trophy-wrap">🏆</div>
+    <div class="badge">🎪 Lacey Fun Fair Explorer</div>
+    <h1>You <span>finished</span> the scavenger hunt!</h1>
+    <p class="hero-sub">You're officially a South Sound Explorer! Claim your FREE Summer Activity Pack — 20 epic things to do this summer.</p>
+
+    <div class="preview-strip">
+      <div class="preview-pill">🌲 Outdoor adventures</div>
+      <div class="preview-pill">🎨 Creative projects</div>
+      <div class="preview-pill">💧 Water games</div>
+      <div class="preview-pill">🧠 Brain challenges</div>
+      <div class="preview-pill">🗓️ Summer bucket list</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div id="form-section">
+    <div class="form-card">
+      <div class="form-title">Claim Your Free Pack!</div>
+      <div class="form-subtitle">
+<div style="text-align:center; margin-bottom:20px;">
+  <a 
+    href="south_sound_explorer_certificate.pdf" 
+    download
+    style="
+      display:inline-block;
+      background:#4ade80;
+      color:white;
+      padding:14px 24px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:800;
+      font-size:18px;
+    "
+  >
+    🎉 Instant Free Prize
+  </a>
+
+<iframe
+  src="https://southsoundplaybook.substack.com/embed"
+  width="100%"
+  height="320"
+  style="border:1px solid #EEE; background:white; border-radius:14px;"
+  frameborder="0"
+  scrolling="no">
+</iframe>
+
+      <p class="privacy-note">🔒 No spam, ever. Unsubscribe anytime. We're just a local family newsletter!</p>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-card" id="success-section">
+    <span class="success-emoji">🎉</span>
+    <div class="success-title" id="success-name">You're in!</div>
+    <p class="success-sub">
+      Welcome to South Sound Playbook! Your Summer Activity Pack is ready to download right now. Check your inbox too — we'll send weekly activity ideas every week, free!
+    </p>
+    <a href="SouthSound_Summer_Activity_Pack.pdf" download class="download-btn">
+      <span class="dl-icon">⬇️</span> Download Activity Pack
+    </a>
+    <p class="download-note">PDF · 14 pages · Free forever</p>
+  </div>
+
+  <!-- WHAT'S INSIDE -->
+  <div class="section">
+    <div class="section-title">What's Inside the Pack? 👀</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="f-emoji">🌲</span>
+        <div class="f-title">5 Outdoor Adventures</div>
+        <div class="f-sub">Parks, trails & backyard fun around South Sound</div>
+      </div>
+      <div class="feature-card">
+        <span class="f-emoji">💧</span>
+        <div class="f-title">Water Games</div>
+        <div class="f-sub">Backyard water fun for hot summer days</div>
+      </div>
+      <div class="feature-card">
+        <span class="f-emoji">🎨</span>
+        <div class="f-title">Creative Projects</div>
+        <div class="f-sub">Art, baking, movies & more from stuff at home</div>
+      </div>
+      <div class="feature-card">
+        <span class="f-emoji">🧠</span>
+        <div class="f-title">Brain Challenges</div>
+        <div class="f-sub">Mystery hunts & learning games kids actually like</div>
+      </div>
+      <div class="feature-card">
+        <span class="f-emoji">🗓️</span>
+        <div class="f-title">Summer Bucket List</div>
+        <div class="f-sub">20 items to check off together as a family</div>
+      </div>
+      <div class="feature-card">
+        <span class="f-emoji">📬</span>
+        <div class="f-title">Weekly Newsletter</div>
+        <div class="f-sub">Fresh ideas every week all year long — free!</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="brand">South Sound Playbook</span>
+    Free weekly kids activities for South Sound families · southsoundplaybook.com
+  </footer>
+</div>
+
+<script>
+function handleSubmit() {
+  const name = document.getElementById('name-input').value.trim();
+  const email = document.getElementById('email-input').value.trim();
+
+  if (!name) {
+    document.getElementById('name-input').focus();
+    document.getElementById('name-input').style.borderColor = '#fb7185';
+    return;
+  }
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').focus();
+    document.getElementById('email-input').style.borderColor = '#fb7185';
+    return;
+  }
+
+  // Hide form, show success
+  document.getElementById('form-section').style.display = 'none';
+  const successEl = document.getElementById('success-section');
+  successEl.style.display = 'block';
+  document.getElementById('success-name').textContent = `You're in, ${name}! 🎉`;
+
+  // Scroll to success
+  successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Launch confetti!
+  launchConfetti();
+
+  // In real life: POST to your email list (Mailchimp, ConvertKit, etc.)
+  console.log('New subscriber:', name, email);
+}
+
+// Confetti
+function launchConfetti() {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const colors = ['#f97316','#fbbf24','#4ade80','#38bdf8','#fb7185','#a78bfa'];
+  const pieces = Array.from({ length: 120 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * -200 - 20,
+    r: Math.random() * 8 + 4,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    vx: (Math.random() - 0.5) * 4,
+    vy: Math.random() * 4 + 2,
+    rot: Math.random() * 360,
+    vrot: (Math.random() - 0.5) * 8,
+    shape: Math.random() > 0.5 ? 'rect' : 'circle'
+  }));
+
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.color;
+      if (p.shape === 'circle') {
+        ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI * 2); ctx.fill();
+      } else {
+        ctx.fillRect(-p.r, -p.r / 2, p.r * 2, p.r);
+      }
+      ctx.restore();
+      p.x += p.vx;
+      p.y += p.vy + frame * 0.01;
+      p.rot += p.vrot;
+    });
+    frame++;
+    if (frame < 200) requestAnimationFrame(draw);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  draw();
+}
+</script>
+</body>
+</html>
