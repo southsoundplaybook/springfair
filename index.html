@@ -15,8 +15,15 @@
 
   .container {
     max-width: 520px;
-    margin: 50px auto;
+    margin: 40px auto;
     padding: 20px;
+  }
+
+  .hero-img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    margin-bottom: 20px;
   }
 
   .card {
@@ -28,7 +35,7 @@
   }
 
   h1 {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 10px;
   }
 
@@ -105,28 +112,31 @@
 
 <div class="container">
 
-  <!-- HERO -->
+  <!-- 🔥 HERO IMAGE (YOUR UPLOADED DESIGN) -->
+  <img src="777ecbe8-9d3f-4687-8197-24ca29b69784.png" class="hero-img" alt="Scavenger Hunt Hero">
+
+  <!-- HERO TEXT -->
   <div class="card">
-    <h1>🎉 Free Summer Activity Pack</h1>
+    <h1>🎉 You finished the scavenger hunt!</h1>
     <p>
-      20+ local kid activities in Olympia, Lacey & Tumwater + weekly ideas for families.
+      You're officially a South Sound Explorer! Claim your FREE Summer Activity Pack + certificate below.
     </p>
   </div>
 
-  <!-- INSTANT CERTIFICATE -->
+  <!-- CERTIFICATE (instant reward) -->
   <div class="card">
-    <h2>🏆 Instant Reward</h2>
-    <p>Download your Scavenger Hunt Certificate instantly.</p>
+    <h2>🏆 Instant Certificate</h2>
+    <p>Download your certificate instantly — no signup needed.</p>
 
     <a class="cert" href="south_sound_certificate.pdf" download>
       🎉 Download Certificate
     </a>
   </div>
 
-  <!-- SIGNUP FORM -->
+  <!-- EMAIL CAPTURE -->
   <div class="card" id="formCard">
-    <h2>🎁 Get Your Summer Pack</h2>
-    <p>Enter your email to unlock the full summer activity pack.</p>
+    <h2>🎁 Unlock Summer Activity Pack</h2>
+    <p>Enter your email to get 20+ summer activities instantly.</p>
 
     <input type="text" id="name" placeholder="First name">
     <input type="email" id="email" placeholder="Email address">
@@ -145,7 +155,7 @@
       ⬇️ Download Summer Pack
     </a>
 
-    <p class="small">Check your email for weekly ideas too.</p>
+    <p class="small">Check your email for weekly ideas.</p>
   </div>
 
 </div>
@@ -160,23 +170,15 @@ function subscribe() {
     return;
   }
 
-  // Send to Google Sheet
   fetch("https://script.google.com/macros/s/AKfycbwlKwWcjhszSFIe098WonJ7NraOOqp_ERf9y1HYRt30QoRmeYr997WPSCFnNNrPTsKD9A/exec", {
     method: "POST",
     body: JSON.stringify({
       name: name,
       email: email,
-      source: "summer_pack_landing_page"
+      source: "scavenger_hunt_landing"
     })
-  })
-  .then(() => {
-    console.log("Saved successfully");
-  })
-  .catch(err => {
-    console.log("Error:", err);
   });
 
-  // Instant UX success (no waiting)
   document.getElementById("formCard").style.display = "none";
   document.getElementById("successBox").style.display = "block";
 }
