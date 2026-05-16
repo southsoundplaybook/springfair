@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>South Sound Playbook — Free Summer Pack</title>
+<title>South Sound Playbook — Summer Pack</title>
 
 <style>
   body {
@@ -107,13 +107,13 @@
 
   <!-- HERO -->
   <div class="card">
-    <h1>🎉 Get Your Free Summer Activity Pack</h1>
+    <h1>🎉 Free Summer Activity Pack</h1>
     <p>
-      20+ local kids activities for Olympia, Lacey & Tumwater + weekly ideas.
+      20+ local kid activities in Olympia, Lacey & Tumwater + weekly ideas for families.
     </p>
   </div>
 
-  <!-- CERTIFICATE (instant value) -->
+  <!-- INSTANT CERTIFICATE -->
   <div class="card">
     <h2>🏆 Instant Reward</h2>
     <p>Download your Scavenger Hunt Certificate instantly.</p>
@@ -123,10 +123,10 @@
     </a>
   </div>
 
-  <!-- EMAIL CAPTURE -->
+  <!-- SIGNUP FORM -->
   <div class="card" id="formCard">
-    <h2>🎁 Unlock Summer Pack</h2>
-    <p>Enter your email to get the full summer activity pack instantly.</p>
+    <h2>🎁 Get Your Summer Pack</h2>
+    <p>Enter your email to unlock the full summer activity pack.</p>
 
     <input type="text" id="name" placeholder="First name">
     <input type="email" id="email" placeholder="Email address">
@@ -145,9 +145,7 @@
       ⬇️ Download Summer Pack
     </a>
 
-    <p class="small">
-      Check your email too — we’ll send weekly ideas.
-    </p>
+    <p class="small">Check your email for weekly ideas too.</p>
   </div>
 
 </div>
@@ -162,26 +160,23 @@ function subscribe() {
     return;
   }
 
-  // 👉 SEND TO YOUR BACKEND (replace this URL)
-  fetch("https://YOUR-BACKEND-ENDPOINT.com/subscribe", {
+  // Send to Google Sheet
+  fetch("https://script.google.com/macros/s/AKfycbwlKwWcjhszSFIe098WonJ7NraOOqp_ERf9y1HYRt30QoRmeYr997WPSCFnNNrPTsKD9A/exec", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
     body: JSON.stringify({
       name: name,
       email: email,
-      source: "landing_page_summer_pack"
+      source: "summer_pack_landing_page"
     })
   })
-  .then(res => {
-    console.log("Saved:", email);
+  .then(() => {
+    console.log("Saved successfully");
   })
   .catch(err => {
-    console.log("Error sending email:", err);
+    console.log("Error:", err);
   });
 
-  // 👉 UI FLOW (instant reward)
+  // Instant UX success (no waiting)
   document.getElementById("formCard").style.display = "none";
   document.getElementById("successBox").style.display = "block";
 }
