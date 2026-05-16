@@ -3,173 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>South Sound Playbook — Claim Your Summer Activity Pack!</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<title>South Sound Playbook — Free Summer Pack</title>
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --sun: #f97316;
-    --grass: #4ade80;
-    --grass-dark: #16a34a;
-    --dark: #1e293b;
-    --gray: #64748b;
-    --white: #ffffff;
-  }
-
   body {
-    font-family: 'Nunito', sans-serif;
-    background: #fffbf5;
-    color: var(--dark);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff7ed;
+    color: #1e293b;
   }
 
-  .page { max-width: 540px; margin: 0 auto; padding: 24px; }
-
-  .hero { text-align: center; padding: 30px 0; }
-
-  .badge {
-    display: inline-block;
-    background: var(--grass);
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 800;
-    margin-bottom: 12px;
+  .container {
+    max-width: 520px;
+    margin: 50px auto;
+    padding: 20px;
   }
-
-  h1 { font-size: 34px; margin-bottom: 10px; }
-  h1 span { color: var(--sun); }
-
-  .hero-sub { color: var(--gray); margin-bottom: 24px; }
 
   .card {
     background: white;
-    border-radius: 18px;
-    padding: 22px;
+    padding: 24px;
+    border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
-  .btn {
-    display: block;
-    text-align: center;
-    padding: 14px;
-    border-radius: 12px;
-    font-weight: 800;
-    text-decoration: none;
-    cursor: pointer;
+  h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
   }
 
-  .btn-green {
-    background: var(--grass);
-    color: white;
-    margin-bottom: 12px;
-  }
-
-  .btn-orange {
-    background: var(--sun);
-    color: white;
+  p {
+    color: #475569;
+    line-height: 1.5;
   }
 
   input {
     width: 100%;
     padding: 12px;
+    margin-top: 10px;
     border-radius: 10px;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #f97316;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #c2410c;
   }
 
   .success {
     display: none;
-    text-align: center;
     background: #ecfdf5;
-    border: 2px solid var(--grass);
+    border: 2px solid #22c55e;
     padding: 20px;
-    border-radius: 16px;
+    border-radius: 14px;
+    text-align: center;
   }
 
-  .download-btn {
+  .download {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #1e293b;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+
+  .cert {
     display: inline-block;
     margin-top: 10px;
-    background: var(--dark);
+    padding: 12px 16px;
+    background: #4ade80;
     color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
     text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+
+  .small {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 10px;
   }
 </style>
 </head>
+
 <body>
 
-<div class="page">
+<div class="container">
 
-  <div class="hero">
-    <div class="badge">🎪 South Sound Explorer</div>
-    <h1>You <span>finished</span> the challenge!</h1>
-    <p class="hero-sub">Claim your free certificate + summer activity pack below</p>
+  <!-- HERO -->
+  <div class="card">
+    <h1>🎉 Get Your Free Summer Activity Pack</h1>
+    <p>
+      20+ local kids activities for Olympia, Lacey & Tumwater + weekly ideas.
+    </p>
   </div>
 
-  <!-- CERTIFICATE CTA -->
+  <!-- CERTIFICATE (instant value) -->
   <div class="card">
-    <h3>🏆 Instant Certificate (No Signup Needed)</h3>
-    <p>Download your Scavenger Hunt Hero Certificate right now.</p>
-    <a class="btn btn-green" href="south_sound_explorer_certificate.pdf" download>
+    <h2>🏆 Instant Reward</h2>
+    <p>Download your Scavenger Hunt Certificate instantly.</p>
+
+    <a class="cert" href="south_sound_certificate.pdf" download>
       🎉 Download Certificate
     </a>
   </div>
 
-  <!-- EMAIL SIGNUP -->
+  <!-- EMAIL CAPTURE -->
   <div class="card" id="formCard">
-    <h3>🎁 Get Your Summer Activity Pack</h3>
-    <p>Subscribe to unlock 20+ summer activities + weekly ideas.</p>
+    <h2>🎁 Unlock Summer Pack</h2>
+    <p>Enter your email to get the full summer activity pack instantly.</p>
 
     <input type="text" id="name" placeholder="First name">
     <input type="email" id="email" placeholder="Email address">
 
-    <!-- Substack embed fallback (optional) -->
-    <iframe
-      src="https://southsoundplaybook.substack.com/embed"
-      width="100%"
-      height="220"
-      style="border:1px solid #eee; border-radius:12px;">
-    </iframe>
+    <button onclick="subscribe()">Get My Summer Pack</button>
 
-    <button class="btn btn-orange" onclick="submitForm()">
-      Get My Summer Pack
-    </button>
+    <p class="small">🔒 No spam. Unsubscribe anytime.</p>
   </div>
 
   <!-- SUCCESS -->
   <div class="success" id="successBox">
     <h2>You're in! 🎉</h2>
     <p>Your Summer Activity Pack is ready.</p>
-    <a class="download-btn" href="SouthSound_Summer_Activity_Pack.pdf" download>
-      ⬇️ Download Now
+
+    <a class="download" href="SouthSound_Summer_Activity_Pack.pdf" download>
+      ⬇️ Download Summer Pack
     </a>
+
+    <p class="small">
+      Check your email too — we’ll send weekly ideas.
+    </p>
   </div>
 
 </div>
 
 <script>
-function submitForm() {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
+function subscribe() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
 
-  if (!name || !email.includes('@')) {
-    alert('Please enter valid info');
+  if (!name || !email.includes("@")) {
+    alert("Please enter valid name and email");
     return;
   }
 
-  // hide form
-  document.getElementById('formCard').style.display = 'none';
+  // 👉 SEND TO YOUR BACKEND (replace this URL)
+  fetch("https://YOUR-BACKEND-ENDPOINT.com/subscribe", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      source: "landing_page_summer_pack"
+    })
+  })
+  .then(res => {
+    console.log("Saved:", email);
+  })
+  .catch(err => {
+    console.log("Error sending email:", err);
+  });
 
-  // show success
-  const success = document.getElementById('successBox');
-  success.style.display = 'block';
-
-  console.log('Subscriber:', name, email);
+  // 👉 UI FLOW (instant reward)
+  document.getElementById("formCard").style.display = "none";
+  document.getElementById("successBox").style.display = "block";
 }
 </script>
 
